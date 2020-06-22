@@ -412,9 +412,9 @@ def predit_sql(sentence):
     pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
     pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template)
     print(pred_tags)
-    print(pred_complete)
+    print("SQL query generated: ", pred_complete)
     
 
 sentence = args.sentence if args.sentence else "give me a good restuarant in delhi "
-print("Sentence ", sentence)
+print("\nSentence for prediction: ", sentence)
 predit_sql(args.sentence)
