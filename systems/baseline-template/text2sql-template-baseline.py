@@ -403,3 +403,17 @@ if args.do_test_eval:
     run_eval(test, builders, "End", "test")
 else:
     run_eval(dev, builders, "End", "dev")
+
+def predit_sql(sentence):
+    tokens = sentence.strip().split()
+    word_ids = [vocab_words.w2i.get(word, UNK) for word in tokens]
+    tag_ids = [0 for t in tokens]
+    pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
+    pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template)
+    print(pred_tags)
+    print(pred_complete)
+    
+
+sentence = args.sentence if args.sentence else "give me a good restuarant in delhi "
+print("Sentence ", sentence)
+predit_sql(args.sentence)
