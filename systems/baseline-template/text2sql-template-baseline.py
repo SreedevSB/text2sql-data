@@ -24,7 +24,7 @@ parser.add_argument('--no-vars', help='Run without filling in variables', action
 parser.add_argument('--use-all-sql', help='Default is to use first SQL only, this makes multiple instances.', action='store_true')
 parser.add_argument('--do-test-eval', help='Do the final evaluation on the test set (rather than dev).', action='store_true')
 parser.add_argument('--split', help='Use this split in cross-validation.', type=int) # Used for small datasets: Academic, Restaurants, IMDB, Yelp
-parser.add_argument('--sentence, help='sample sentence for prediction')
+parser.add_argument('--sentence', help='sample sentence for prediction')
                     
 # Model
 parser.add_argument('--mlp', help='Use a multi-layer perceptron', action='store_true')
