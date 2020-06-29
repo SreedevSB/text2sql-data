@@ -61,12 +61,12 @@ def insert_variables(sql, sql_variables, sent, sent_variables):
         else:
             assert len(sent_variables[token]) > 0
             seen_sent_variables.add(token)
-            for word in sent_variables[token].split():
-                print("-------------------")
-                print(word, token)
-                tokens.append(word)
-                tags.append(token)
-                print("-------------------")
+            if type(sent_variables[token]) == list:
+                pass
+            else:
+                for word in sent_variables[token].split():
+                    tokens.append(word)
+                    tags.append(token)
 
     sql_tokens = []
     for token in sql.strip().split():
@@ -112,7 +112,6 @@ def insert_variables(sql, sql_variables, sent, sent_variables):
             complete.append(sql_variables[token])
         else:
             complete.append(token)
-
     return (tokens, tags, ' '.join(template), ' '.join(complete))
 
 def get_tagged_data_for_query(data):
@@ -140,7 +139,7 @@ def get_tagged_data_for_query(data):
                 sql_vars[sql_var['name']] = sql_var['example']
             text = sent_info['text']
             text_vars = sent_info['variables']
-
+            print(insert_variables(sql, sql_vars, text, text_vars))
             yield (dataset, insert_variables(sql, sql_vars, text, text_vars))
 
             if not args.use_all_sql:
