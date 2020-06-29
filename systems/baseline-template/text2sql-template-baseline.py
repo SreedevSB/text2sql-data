@@ -7,6 +7,7 @@ import pickle
 import random
 import json
 import sys
+import random
 
 print("Running:\n"+ ' '.join(sys.argv))
 
@@ -137,22 +138,27 @@ def get_tagged_data_for_query(data):
             text = sent_info['text']
             text_vars = sent_info['variables']
             new_text_vars = {}
-            num_listvars=0
+            listvars=[]
             for var,vals in text_vars.items():
                 if type(vals) != list:
                     new_text_vars[var] = vals
                 else:
-                    num_listvars+=1
-                    
-            if num_listvars == 0:
+                    listvars.append(var)
+            counter=0
+            if len(listvars) == 0:
                 yield (dataset, insert_variables(sql, sql_vars, text, text_vars))
             else:
-                for var,vals in text_vars.items():
-                    if type(vals) == list:
-                        for val in vals:
-                            new_text_vars[var] = val
+                for i in range(len(listvars)):
+                    var = listvars[i]
+                    counter += 1
+                    for val in text_vars[var]:
+                        new_var_items[var] = val
+                        if counter == len(listvars):
                             yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
-
+                        else:
+                            for j in range(i+1,len(listvars)):
+                                new_var_items[listvars[j]] = text_vars[listvars[j]][random.randrange(len(text_vars[listvars[j]]))]
+                            yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
 
             if not args.use_all_sql:
                 break
