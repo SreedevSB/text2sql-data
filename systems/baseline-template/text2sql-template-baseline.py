@@ -62,8 +62,11 @@ def insert_variables(sql, sql_variables, sent, sent_variables):
             assert len(sent_variables[token]) > 0
             seen_sent_variables.add(token)
             for word in sent_variables[token].split():
+                print("-------------------")
+                print(word, token)
                 tokens.append(word)
                 tags.append(token)
+                print("-------------------")
 
     sql_tokens = []
     for token in sql.strip().split():
