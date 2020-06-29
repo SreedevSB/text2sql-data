@@ -146,6 +146,7 @@ def get_tagged_data_for_query(data):
                 else:
                     for val in vals:
                         new_text_vars[var] = val
+                        print(new_text_vars)
                         yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
 
 
