@@ -139,6 +139,7 @@ def get_tagged_data_for_query(data):
                 sql_vars[sql_var['name']] = sql_var['example']
             text = sent_info['text']
             text_vars = sent_info['variables']
+            print(text_vars)
             for var,vals in text_vars.items():
                 new_text_vars = {}
                 if  type(vals) != list:
