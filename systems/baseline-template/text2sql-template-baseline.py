@@ -140,7 +140,15 @@ def get_tagged_data_for_query(data):
             text = sent_info['text']
             text_vars = sent_info['variables']
             print(insert_variables(sql, sql_vars, text, text_vars))
-            yield (dataset, insert_variables(sql, sql_vars, text, text_vars))
+            for var,vals in text_vars.items():
+                new_text_vars = {}
+                if  type(var) != list:
+                    new_text_vars[var] = val
+                else:
+                    for val in vals:
+                        new_text_vars[var] = val
+                        yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
+
 
             if not args.use_all_sql:
                 break
