@@ -138,11 +138,13 @@ def get_tagged_data_for_query(data):
             text_vars = sent_info['variables']
             new_text_vars = {}
             for var,vals in text_vars.items():
-                if  type(vals) != list:
+                if type(vals) != list:
                     new_text_vars[var] = vals
-                else:
+            for var,vals in text_vars.items():
+                if type(vals) == list:
                     for val in vals:
                         new_text_vars[var] = val
+                        print(new_text_vars)
                         yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
 
 
