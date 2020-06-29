@@ -137,7 +137,7 @@ def get_tagged_data_for_query(data):
             text = sent_info['text']
             text_vars = sent_info['variables']
             new_text_vars = {}
-            num_listvars=
+            num_listvars=0
             for var,vals in text_vars.items():
                 if type(vals) != list:
                     new_text_vars[var] = vals
