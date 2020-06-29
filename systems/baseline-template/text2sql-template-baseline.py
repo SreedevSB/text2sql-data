@@ -142,8 +142,8 @@ def get_tagged_data_for_query(data):
             print(insert_variables(sql, sql_vars, text, text_vars))
             for var,vals in text_vars.items():
                 new_text_vars = {}
-                if  type(var) != list:
-                    new_text_vars[var] = val
+                if  type(vals) != list:
+                    new_text_vars[var] = vals
                 else:
                     for val in vals:
                         new_text_vars[var] = val
