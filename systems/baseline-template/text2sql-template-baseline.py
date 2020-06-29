@@ -152,12 +152,12 @@ def get_tagged_data_for_query(data):
                     var = listvars[i]
                     counter += 1
                     for val in text_vars[var]:
-                        new_var_items[var] = val
+                        new_text_vars[var] = val
                         if counter == len(listvars):
                             yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
                         else:
                             for j in range(i+1,len(listvars)):
-                                new_var_items[listvars[j]] = text_vars[listvars[j]][random.randrange(len(text_vars[listvars[j]]))]
+                                new_text_vars[listvars[j]] = text_vars[listvars[j]][random.randrange(len(text_vars[listvars[j]]))]
                             yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
 
             if not args.use_all_sql:
