@@ -151,7 +151,7 @@ def get_tagged_data_for_query(data):
                 for i in range(len(listvars)):
                     var = listvars[i]
                     for val in text_vars[var]:
-                        new_text_vars[var] = val:
+                        new_text_vars[var] = val
                         for j in range(0,i-1):
                             new_text_vars[listvars[j]] = text_vars[listvars[j]][random.randrange(len(text_vars[listvars[j]]))]
                         for j in range(i+1,len(listvars)):
