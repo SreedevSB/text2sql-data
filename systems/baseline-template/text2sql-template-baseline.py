@@ -145,10 +145,8 @@ def get_tagged_data_for_query(data):
                     new_text_vars[var] = vals
                 else:
                     for val in vals:
-                        if var not in new_text_vars.keys():
-                            new_text_vars[var] = val
-                            vals.remove(val)
-            yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
+                        new_text_vars[var] = val
+                        yield (dataset, insert_variables(sql, sql_vars, text, new_text_vars))
 
 
             if not args.use_all_sql:
