@@ -314,7 +314,7 @@ def build_tagging_graph(words, tags, template, builders, train=True):
         errs.append(err)
     else:
         out = dy.softmax(r_tt)
-        dy.save("model", [dy.softmax(r_tt)])
+        dy.save("model", [r_tt])
         chosen = np.argmax(out.npvalue())
         pred_template = vocab_templates.i2w[chosen]
     return pred_tags, pred_template, errs
@@ -418,7 +418,6 @@ for iteration in range(args.max_iters):
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
 
-dy.save("./model",[])
 # Final dev
 '''
 if args.do_test_eval:
