@@ -375,6 +375,8 @@ def run_eval(data, builders, iteration, step):
     print("Eval {}-{} Tag Acc: {:>5} Template: {:>5} Complete: {:>5} Oracle: {:>5}".format(iteration, step, tok_acc, template_acc, complete_acc, oracle_acc))
     return complete_acc
 
+  
+'''
 tagged = 0
 loss = 0
 best_dev_acc = 0.0
@@ -416,7 +418,7 @@ for iteration in range(args.max_iters):
     if args.max_bad_iters > 0 and iters_since_best_updated > args.max_bad_iters:
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
-
+'''
 # Final dev
 '''
 if args.do_test_eval:
