@@ -314,6 +314,7 @@ def build_tagging_graph(words, tags, template, builders, train=True):
         errs.append(err)
     else:
         out = dy.softmax(r_tt)
+        dy.save([dy.softmax(r_tt)])
         chosen = np.argmax(out.npvalue())
         pred_template = vocab_templates.i2w[chosen]
     return pred_tags, pred_template, errs
