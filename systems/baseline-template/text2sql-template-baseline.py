@@ -418,10 +418,12 @@ for iteration in range(args.max_iters):
         break
 
 # Final dev
+'''
 if args.do_test_eval:
     run_eval(test, builders, "End", "test")
 else:
     run_eval(dev, builders, "End", "dev")
+'''
 
 def predit_sql(sentence):
     tokens = sentence.strip().split()
