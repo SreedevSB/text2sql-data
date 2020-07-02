@@ -376,7 +376,6 @@ def run_eval(data, builders, iteration, step):
     return complete_acc
 
   
-'''
 tagged = 0
 loss = 0
 best_dev_acc = 0.0
@@ -418,7 +417,8 @@ for iteration in range(args.max_iters):
     if args.max_bad_iters > 0 and iters_since_best_updated > args.max_bad_iters:
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
-'''
+
+dy.save("./model")
 # Final dev
 '''
 if args.do_test_eval:
