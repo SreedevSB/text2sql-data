@@ -429,7 +429,7 @@ def predit_sql(sentence):
     tokens = sentence.strip().split()
     word_ids = [vocab_words.w2i.get(word, UNK) for word in tokens]
     tag_ids = [0 for t in tokens]
-    m = dy.load("model");
+    m = dy.load("model",[]);
     pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
     pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template)
     print(pred_tags)
