@@ -371,7 +371,7 @@ def run_eval(data, builders, iteration, step):
     complete_acc = complete_match / len(data)
     template_acc = templates_match / len(data)
     oracle_acc = oracle / len(data)
-    print("Eval {}-{} Tag Acc: {:>5} Template: {:>5} Complete: {:>5} Oracle: {:>5}".format(iteration, step, tok_acc, template_acc, complete_acc, oracle_acc))
+    #print("Eval {}-{} Tag Acc: {:>5} Template: {:>5} Complete: {:>5} Oracle: {:>5}".format(iteration, step, tok_acc, template_acc, complete_acc, oracle_acc))
     return complete_acc
 
   
