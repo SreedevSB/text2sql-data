@@ -416,7 +416,7 @@ for iteration in range(args.max_iters):
     if args.max_bad_iters > 0 and iters_since_best_updated > args.max_bad_iters:
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
-dy.save("model",[trainer, model])
+dy.save("model",[model])
 # Final dev
 '''
 if args.do_test_eval:
@@ -429,7 +429,8 @@ def predit_sql(sentence):
     tokens = sentence.strip().split()
     word_ids = [vocab_words.w2i.get(word, UNK) for word in tokens]
     tag_ids = [0 for t in tokens]
-    m = dy.load("model",[]);
+    model1 = dy.model()
+    m = dy.load("model",[model1]);
     pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
     pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template)
     print(pred_tags)
