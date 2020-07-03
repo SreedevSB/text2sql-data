@@ -432,8 +432,8 @@ def predit_sql(sentence):
     #model1 = dy.ParameterCollection()
     #m = dy.load("model",[model1]);
     pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
-    pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template).replace('\" ', '\"' )
-    pred_complete.replace('\ "','"')
+    pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template).replace(' "', '"' )
+    pred_complete =  pred_complete.replace('" ','"')
     print(pred_tags)
     print("SQL query generated: ", pred_complete)
     
