@@ -271,7 +271,7 @@ pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 '''
 ## Training and evaluation ##
 dy.renew_cg()
-model =dy.Model()
+model =dy.ParameterCollection()
 builders=[]
 pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load(args.model_name, model)
 builders.append(b1)
