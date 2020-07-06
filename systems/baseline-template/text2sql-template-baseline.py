@@ -231,9 +231,10 @@ NTEMPLATES = vocab_templates.size()
 print("Running with {} templates".format(NTEMPLATES))
 
 ## Set up model ##
-
+'''
 model = dy.Model()
 trainer = dy.SimpleSGDTrainer(model, learning_rate=args.learning_rate)
+'''
 DIM_WORD = args.dim_word
 DIM_HIDDEN_LSTM = args.dim_hidden_lstm
 DIM_HIDDEN_MLP = args.dim_hidden_mlp
@@ -266,7 +267,7 @@ pHiddenTemplate = model.add_parameters((DIM_HIDDEN_TEMPLATE, DIM_HIDDEN_LSTM*2))
 pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 '''
 ## Training and evaluation ##
-model =dy.model()
+model =dy.Model()
 builders=[]
 pEmbedding, pOutput,builders[0],builders[1],pHiddenTemplate,pOutputTemplate = dy.load("model_new", model)
 def build_tagging_graph(words, tags, template, builders, train=True):
