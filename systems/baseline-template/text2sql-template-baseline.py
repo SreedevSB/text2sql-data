@@ -416,7 +416,7 @@ for iteration in range(args.max_iters):
     if args.max_bad_iters > 0 and iters_since_best_updated > args.max_bad_iters:
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
-#dy.save("model",[model])
+dy.save("model_new",[pEmbedding, pHidden, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
 # Final dev
 
 if args.do_test_eval:
