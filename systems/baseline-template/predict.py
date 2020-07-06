@@ -21,6 +21,7 @@ parser = argparse.ArgumentParser(description='A simple template-based text-to-SQ
 parser.add_argument('data', help='json file', nargs='+')
 parser.add_argument('--sentence', help='sample sentence for prediction')
 parser.add_argument('--model_name', help='sample sentence for prediction')
+parser.add_argument('--split', help='sample sentence for prediction')
 
 args = parser.parse_args()
 
