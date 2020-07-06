@@ -417,7 +417,7 @@ for iteration in range(args.max_iters):
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
         
-dy.save("model_new",[pEmbedding, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
+
 # Final dev
 
 if args.do_test_eval:
@@ -433,6 +433,7 @@ def predit_sql(sentence):
     tag_ids = [0 for t in tokens]
     pred_tags, pred_template, _ = build_tagging_graph(word_ids, tag_ids, 0, builders, False)
     pred_complete = insert_tagged_tokens(tokens, pred_tags, pred_template)
+    dy.save("model_new",[pEmbedding, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
     print(pred_tags)
     print("SQL query generated: ", pred_complete)
     
