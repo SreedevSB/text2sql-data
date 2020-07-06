@@ -232,7 +232,7 @@ print("Running with {} templates".format(NTEMPLATES))
 
 ## Set up model ##
 
-model = dy.Model()
+model = dy.ParameterCollection()
 trainer = dy.SimpleSGDTrainer(model, learning_rate=args.learning_rate)
 DIM_WORD = args.dim_word
 DIM_HIDDEN_LSTM = args.dim_hidden_lstm
