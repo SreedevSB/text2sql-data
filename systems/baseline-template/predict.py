@@ -18,7 +18,7 @@ import numpy as np
 parser = argparse.ArgumentParser(description='A simple template-based text-to-SQL system.')
 
 # IO
-
+parser.add_argument('data', help='json file', nargs='+')
 parser.add_argument('--sentence', help='sample sentence for prediction')
 parser.add_argument('--model_name', help='sample sentence for prediction')
 
