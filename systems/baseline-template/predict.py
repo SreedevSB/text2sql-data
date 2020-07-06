@@ -270,6 +270,7 @@ pHiddenTemplate = model.add_parameters((DIM_HIDDEN_TEMPLATE, DIM_HIDDEN_LSTM*2))
 pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 '''
 ## Training and evaluation ##
+dy.renew_cg()
 model =dy.Model()
 builders=[]
 pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load(args.model_name, model)
