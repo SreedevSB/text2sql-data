@@ -270,8 +270,8 @@ pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 model =dy.Model()
 builders=[]
 pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load("model_new", model)
-builders[0]=b1
-builders[1]=b2
+builders.append(b1)
+builders.append(b2)
 def build_tagging_graph(words, tags, template, builders, train=True):
     dy.renew_cg()
     
