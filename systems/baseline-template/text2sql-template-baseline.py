@@ -266,12 +266,12 @@ pHiddenTemplate = model.add_parameters((DIM_HIDDEN_TEMPLATE, DIM_HIDDEN_LSTM*2))
 pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 '''
 ## Training and evaluation ##
-
+model =dy.model()
+builders=[]
+pEmbedding, pOutput,builders[0],builders[1],pHiddenTemplate,pOutputTemplate = dy.load("model_new", model)
 def build_tagging_graph(words, tags, template, builders, train=True):
     dy.renew_cg()
-    model =dy.model()
-    builders=[]
-    pEmbedding, pOutput,builders[0],builders[1],pHiddenTemplate,pOutputTemplate = dy.load("model_new", m2)
+    
     if train and args.lstm_dropout is not None and args.lstm_dropout > 0:
         for b in builders:
             b.set_dropouts(args.lstm_dropout, args.lstm_dropout)
