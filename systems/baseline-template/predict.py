@@ -211,11 +211,12 @@ print("Running with {} templates".format(NTEMPLATES))
 '''
 model = dy.Model()
 trainer = dy.SimpleSGDTrainer(model, learning_rate=args.learning_rate)
-'''
+
 DIM_WORD = args.dim_word
 DIM_HIDDEN_LSTM = args.dim_hidden_lstm
 DIM_HIDDEN_MLP = args.dim_hidden_mlp
 DIM_HIDDEN_TEMPLATE = args.dim_hidden_template
+'''
 '''
 pEmbedding = model.add_lookup_parameters((NWORDS, DIM_WORD))
 if args.word_vectors is not None:
