@@ -137,7 +137,7 @@ def get_tagged_data_for_query(data):
 
             if not args.use_all_sql:
                 break
-
+''' 
 train = []
 dev = []
 test = []
@@ -159,7 +159,7 @@ for filename in args.data:
                     pass
                 else:
                     assert False, dataset
-
+'''
 ## Set up voacbulary ##
 
 class Vocab:
