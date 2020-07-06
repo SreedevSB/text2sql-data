@@ -426,7 +426,7 @@ if args.do_test_eval:
     run_eval(test, builders, "End", "test")
 else:
     #run_eval(dev, builders, "End", "dev")
-    run_eval(train, builders, "End", "dev")
+    #run_eval(train, builders, "End", "dev")
 
 
 def predit_sql(sentence):
