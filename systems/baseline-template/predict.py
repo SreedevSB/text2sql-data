@@ -402,13 +402,13 @@ for iteration in range(args.max_iters):
 '''
 #dy.save("model_new",[pEmbedding, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
 # Final dev
-
+'''
 if args.do_test_eval:
     run_eval(test, builders, "End", "test")
 #else:
     #run_eval(dev, builders, "End", "dev")
     #run_eval(train, builders, "End", "dev")
-
+'''
 
 def predit_sql(sentence):
     tokens = sentence.strip().split()
