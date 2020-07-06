@@ -198,7 +198,7 @@ def build_vocab(sentences):
     vocab_templates = Vocab.from_corpus(template_set)
 
     return vocab_words, vocab_tags, vocab_templates
-
+'''
 vocab_words, vocab_tags, vocab_templates = build_vocab(train)
 UNK = vocab_words.w2i["<UNK>"]
 NWORDS = vocab_words.size()
@@ -206,7 +206,7 @@ NTAGS = vocab_tags.size()
 NTEMPLATES = vocab_templates.size()
 
 print("Running with {} templates".format(NTEMPLATES))
-
+'''
 ## Set up model ##
 '''
 model = dy.Model()
