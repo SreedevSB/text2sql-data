@@ -238,7 +238,7 @@ DIM_WORD = args.dim_word
 DIM_HIDDEN_LSTM = args.dim_hidden_lstm
 DIM_HIDDEN_MLP = args.dim_hidden_mlp
 DIM_HIDDEN_TEMPLATE = args.dim_hidden_template
-
+'''
 pEmbedding = model.add_lookup_parameters((NWORDS, DIM_WORD))
 if args.word_vectors is not None:
     pretrained = []
@@ -264,12 +264,14 @@ builders = [
 
 pHiddenTemplate = model.add_parameters((DIM_HIDDEN_TEMPLATE, DIM_HIDDEN_LSTM*2))
 pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
-
+'''
 ## Training and evaluation ##
 
 def build_tagging_graph(words, tags, template, builders, train=True):
     dy.renew_cg()
-
+    model =dy.model()
+    builders=[]
+    pEmbedding, pOutput,builders[0],builders[1],pHiddenTemplate,pOutputTemplate = dy.load("model_new", m2)
     if train and args.lstm_dropout is not None and args.lstm_dropout > 0:
         for b in builders:
             b.set_dropouts(args.lstm_dropout, args.lstm_dropout)
@@ -374,7 +376,7 @@ def run_eval(data, builders, iteration, step):
     #print("Eval {}-{} Tag Acc: {:>5} Template: {:>5} Complete: {:>5} Oracle: {:>5}".format(iteration, step, tok_acc, template_acc, complete_acc, oracle_acc))
     return complete_acc
 
-  
+'''
 tagged = 0
 loss = 0
 best_dev_acc = 0.0
@@ -416,7 +418,8 @@ for iteration in range(args.max_iters):
     if args.max_bad_iters > 0 and iters_since_best_updated > args.max_bad_iters:
         print("Stopping at iter {} as there have been {} iters without improvement".format(iteration, args.max_bad_iters))
         break
-dy.save("model_new",[pEmbedding, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
+'''
+#dy.save("model_new",[pEmbedding, pOutput, builders[0], builders[1], pHiddenTemplate, pOutputTemplate])
 # Final dev
 
 if args.do_test_eval:
