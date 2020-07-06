@@ -273,7 +273,7 @@ pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load("model_new",
 builders.append(b1)
 builders.append(b2)
 def build_tagging_graph(words, tags, template, builders, train=True):
-    dy.renew_cg()
+    #dy.renew_cg()
     
     if train and args.lstm_dropout is not None and args.lstm_dropout > 0:
         for b in builders:
