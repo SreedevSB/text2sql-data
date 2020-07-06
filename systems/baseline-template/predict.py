@@ -18,32 +18,9 @@ import numpy as np
 parser = argparse.ArgumentParser(description='A simple template-based text-to-SQL system.')
 
 # IO
-parser.add_argument('data', help='Data in json format', nargs='+')
-parser.add_argument('--unk-max', help='Maximum count to be considered an unknown word', type=int, default=0)
-parser.add_argument('--query-split', help='Use the query split rather than the question split', action='store_true')
-parser.add_argument('--no-vars', help='Run without filling in variables', action='store_true')
-parser.add_argument('--use-all-sql', help='Default is to use first SQL only, this makes multiple instances.', action='store_true')
-parser.add_argument('--do-test-eval', help='Do the final evaluation on the test set (rather than dev).', action='store_true')
-parser.add_argument('--split', help='Use this split in cross-validation.', type=int) # Used for small datasets: Academic, Restaurants, IMDB, Yelp
-parser.add_argument('--sentence', help='sample sentence for prediction')
-                    
-# Model
-parser.add_argument('--mlp', help='Use a multi-layer perceptron', action='store_true')
-parser.add_argument('--dim-word', help='Dimensionality of word embeddings', type=int, default=128)
-parser.add_argument('--dim-hidden-lstm', help='Dimensionality of LSTM hidden vectors', type=int, default=64)
-parser.add_argument('--dim-hidden-mlp', help='Dimensionality of MLP hidden vectors', type=int, default=32)
-parser.add_argument('--dim-hidden-template', help='Dimensionality of MLP hidden vectors for the final template choice', type=int, default=64)
-parser.add_argument('--word-vectors', help='Pre-built word embeddings')
-parser.add_argument('--lstm-layers', help='Number of layers in the LSTM', type=int, default=2)
 
-# Training
-parser.add_argument('--max-iters', help='Maximum number of training iterations', type=int, default=50)
-parser.add_argument('--max-bad-iters', help='Maximum number of consecutive training iterations without improvement', type=int, default=5)
-parser.add_argument('--log-freq', help='Number of examples to decode between logging', type=int, default=400)
-parser.add_argument('--eval-freq', help='Number of examples to decode between evaluation runs', type=int, default=800)
-parser.add_argument('--train-noise', help='Noise added to word embeddings as regularization', type=float, default=0.1)
-parser.add_argument('--lstm-dropout', help='Dropout for input and hidden elements of the LSTM', type=float, default=0.0)
-parser.add_argument('--learning-rate', help='Learning rate for optimiser', type=float, default="0.1")
+parser.add_argument('--sentence', help='sample sentence for prediction')
+parser.add_argument('--model_name', help='sample sentence for prediction')
 
 args = parser.parse_args()
 
@@ -269,7 +246,7 @@ pOutputTemplate = model.add_parameters((NTEMPLATES, DIM_HIDDEN_TEMPLATE))
 ## Training and evaluation ##
 model =dy.Model()
 builders=[]
-pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load("model_new", model)
+pEmbedding, pOutput,b1,b2,pHiddenTemplate,pOutputTemplate = dy.load(args.model_name, model)
 builders.append(b1)
 builders.append(b2)
 def build_tagging_graph(words, tags, template, builders, train=True):
