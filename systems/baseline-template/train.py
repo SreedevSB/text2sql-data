@@ -305,7 +305,6 @@ def build_tagging_graph(words, tags, template, builders, train=True):
 
     O_template = dy.parameter(pOutputTemplate)
     H_template = dy.parameter(pHiddenTemplate)
-    print(O_template, H_template)
     f_bt = dy.concatenate([fw_states[-1].s()[0], bw_states[-1].s()[0]])
     f_bt = dy.tanh(H_template * f_bt)
     r_tt = O_template * f_bt
